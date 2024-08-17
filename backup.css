@@ -287,184 +287,235 @@ span{
     margin-bottom: 15px;
 }
 
+
 .experiences{
-    background: var(--bg-color);
-    font-family: 'Poppins', sans-serif;
-    margin: 10px;
-    padding: 10px;
+    background-color: var(--bg-color);
+}
+.experiences h2{
+    margin-bottom: 10rem;
+}
+
+.experiences-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 11rem;
+}
+
+.experiences-box {
+    position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: var(--text-bg-color);
-    overflow: hidden;
+    /* max-width: 100%; */
+    background-color: rgba(159, 34, 72, 0.61);
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
 }
 
-.experiences .experience-container {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    height: 85%;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
+.experiences-box img{
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+
 }
 
-.split-screen {
-    width: 35%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    transition: width 0.5s ease;
+.experiences-box:hover img {
+    transform: scale(1.1);
 }
 
-.split-screen:first-child {
-    position: relative;
-    background: url('./images/frame.png');
-    background-size: cover;
-    color: white;
-    cursor: pointer;
-    z-index: 2;
-    text-align: center;
-    overflow: hidden;
-}
-
-.split-screen:first-child::before {
-    content: "";
+.experiences-box .experiences-layer {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
-    opacity: 0.5; 
-    z-index: 1; 
-}
-
-.split-screen:first-child > * {
-    position: relative;
-    z-index: 2; 
-}
-
-.split-screen:first-child:hover {
-    width: 45%;
-}
-
-.split-screen:last-child {
-    width: 65%;
-    background: #f5f5f5;
-    overflow-y: auto;
-    padding: 20px;
-    z-index: 1;
+    background: linear-gradient(rgba(0, 0, 0, .1), var(--main-bg-color));
     display: flex;
-    flex-direction:column;
-    height: 100%;
-    position: relative;
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
 }
 
-.split-screen .title {
-    font-size: 4.5rem;
-    margin-bottom: 25px;
-    animation: fadeIn 1.5s ease-in-out;
+.experiences-box:hover .experiences-layer {
+    transform: translateY(0);
 }
 
-.split-screen .para {
+.experiences-layer h4{
+    font-size: 3rem;
+}
+
+.experiences-layer p{
     font-size: 1.6rem;
-    margin-bottom: 30px;
+    margin: .3rem 0 1rem;
 }
 
-.accordion {
-    background-color: #0e2431;
-    color: #fff;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
+.experiences-layer a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    background: var(--text-bg-color);
+    border-radius: 50%;
 }
 
-.accordion:after {
-    content: '\002B';
-    font-size: 24px;
-    color: #9f1e49;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
+.experiences-layer a i{
+    font-size: 2rem;
+    color: var(--second-bg-color)
 }
 
-.accordion.active:after {
-    transform: rotate(45deg);
-}
-
-.duration {
-    font-size: 0.9em;
-    color: #888;
-}
-
-.panel {
-    margin-bottom: 20px;
-    padding: 0 18px;
+/* Modal styles */
+.modal {
     display: none;
-    background-color: #555;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    transition: max-height 0.5s ease-out;
-    max-height: 0;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
-.panel.show {
-    display: block;
+/* Modal content */
+.modal-content {
+    background-color: rgba(14, 36, 49, 0.5);
+    margin: auto;
+    margin-top: 200px;
+    padding: 20px;
+    padding-right: 16px;
+    width: 450px;
+    height: 450px;
+    border: 2.5px solid var(--main-bg-color);
+    overflow: hidden;
+    border-radius: 3rem;
+    position: relative;
 }
 
-.panel p {
-    font-size: 16px;
-    line-height: 1.6;
-    padding: 10px 0;
-    color: #ddd;
+#webDesignModal1 .modal-content-scroll {
+    max-height: calc(100% - 20px);
+    overflow: auto; 
+    padding-right: 9px;
 }
 
-.highlight {
-    color: #9f1e49;
-    font-weight: bold;
+#webDesignModal2 .modal-content-scroll {
+    max-height: calc(100% - 20px);
+    overflow: auto; 
+    padding-right: 9px;
 }
 
-/* Custom scrollbar */
-.split-screen:last-child::-webkit-scrollbar {
-    width: 12px;
+#webDesignModal3 .modal-content-scroll {
+    max-height: calc(100% - 20px);
+    overflow: auto; 
+    padding-right: 9px;
 }
 
-.split-screen:last-child::-webkit-scrollbar-track {
-    background: #f5f5f5;
+.modal-content img{
+    padding: 20px 20px 20px 20px;
+    border-radius: 0%;
+    width: 300px;
+    height: 230px;
+}
+.modal-content .img1{
+    padding: 20px 20px 20px 20px;
+    border-radius: 0%;
+    width: 300px;
+    height: 380px;
 }
 
-.split-screen:last-child::-webkit-scrollbar-thumb {
-    background-color: #000;
-    border-radius: 20px;
-    border: 3px solid #f5f5f5;
+#webDesignModal1 .modal-content-scroll::-webkit-scrollbar {
+    width: 4.5px; 
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#webDesignModal1 .modal-content-scroll::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1; 
+    border-radius: 10px; 
 }
+
+#webDesignModal2 .modal-content-scroll::-webkit-scrollbar {
+    width: 4.5px; 
+}
+
+#webDesignModal2 .modal-content-scroll::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1; 
+    border-radius: 10px; 
+}
+
+#webDesignModal3 .modal-content-scroll::-webkit-scrollbar {
+    width: 4.5px; 
+}
+
+#webDesignModal3 .modal-content-scroll::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1; 
+    border-radius: 10px; 
+}
+
+#webDesignModal1 .modal-content h2 {
+    font-size: 24px;
+    font-weight: bold; 
+    margin-bottom: 25px; 
+}
+
+#webDesignModal1 .modal-content h3 {
+    font-size: 20px;
+    font-weight: bold; 
+    margin-bottom: 25px;
+}
+
+#webDesignModal1 .modal-content p {
+    font-size: 16px; 
+    line-height: 1.5; 
+    margin-bottom: 20px;
+    margin-right: 9px;
+}
+
+#webDesignModal2 .modal-content h2 {
+    font-size: 24px;
+    font-weight: bold; 
+    margin-bottom: 25px; 
+}
+
+#webDesignModal2 .modal-content h3 {
+    font-size: 20px;
+    font-weight: bold; 
+    margin-bottom: 25px;
+}
+
+#webDesignModal2 .modal-content p {
+    font-size: 16px; 
+    line-height: 1.5; 
+    margin-bottom: 20px;
+    margin-right: 9px;
+}
+
+#webDesignModal3 .modal-content h2 {
+    font-size: 24px;
+    font-weight: bold; 
+    margin-bottom: 25px; 
+}
+
+#webDesignModal3 .modal-content h3 {
+    font-size: 20px;
+    font-weight: bold; 
+    margin-bottom: 25px;
+}
+
+#webDesignModal3 .modal-content p {
+    font-size: 16px; 
+    line-height: 1.5; 
+    margin-bottom: 20px;
+    margin-right: 9px;
+}
+
 
 .certificate {
     background: var(--bg-color);
@@ -520,7 +571,7 @@ span{
     padding: 1rem 2.8rem;
     background: var(--main-bg-color);
     box-shadow: 0 0 1rem var(--main-bg-color);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 450;
     letter-spacing: .1rem;
     color: var(--text-bg-color);
@@ -533,13 +584,14 @@ span{
 }
 
 
+
 .portfolio{
-    font-family: 'Poppins', sans-serif;
-    color: var(--text-bg-color);
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
     background: var(--third-bg-color);
+}
+
+.portfolio h2{
+    /* margin-top: 4rem; */
+    margin-bottom: 4rem;
 }
 
 .portfolio-container{
@@ -548,10 +600,9 @@ span{
     left: 50%;
     transform: translate(-50%, 0%);
     width: 1100px;
-    height: 550px;
+    height: 520px;
     background: white;
 }
-
 
 .portfolio-container .portfolio-slide .portfolio-item{
     width: 200px;
@@ -611,7 +662,7 @@ span{
 }
 
 .portfolio-content h3{
-    font-size: 35px;
+    font-size: 40px;
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0;

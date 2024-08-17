@@ -124,4 +124,31 @@ window.onclick = function(event) {
     });
 };
 
+// experience section 
 
+function togglePanel(element) {
+    element.classList.toggle("active");
+    const panel = element.nextElementSibling;
+
+    if (panel.classList.contains("show")) {
+        panel.classList.remove("show");
+        panel.style.maxHeight = null;
+    } else {
+        panel.classList.add("show");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+}
+
+function showInternships() {
+    const splitScreen = document.querySelector('.split-screen:last-child');
+
+    document.querySelectorAll('.accordion').forEach(acc => {
+        acc.classList.add('active');
+        const panel = acc.nextElementSibling;
+        panel.classList.add('show');
+        panel.style.maxHeight = panel.scrollHeight + "px";
+    });
+
+    // Ensure the scrollbar starts from the top when the user clicks "Explore"
+    splitScreen.scrollTop = 0;
+}
